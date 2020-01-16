@@ -14,12 +14,11 @@ public class MyFirstProgram {
     System.out.println("площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
 
     // Расстояние между двумя точками
-    double x1 = 4;
-    double y1 = 6;
-    double x2 = -3;
-    double y2 = 8;
 
-    System.out.println("расстояние между точками p1 и p2 = " + distance(x1, y1, x2, y2));
+    Point p1 = new Point(3,8);
+    Point p2 = new Point(-4,5);
+
+    System.out.println("расстояние между точками p1 и p2 = " + p1.distance(p2));
 
   }
 
@@ -27,8 +26,9 @@ public class MyFirstProgram {
     System.out.println("Hello, " + somebody + "!");
   }
 
+  /*
   public static double distance(double x1, double y1, double x2, double y2) {
     return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
   }
-
+  */
 }
