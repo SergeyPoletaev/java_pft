@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
-  private WebDriver wd;
 
   public ContactHelper(WebDriver wd) {
     super(wd);
@@ -20,7 +19,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void returnToHomePage() {
-    click(By.linkText("home page"));
+    click(By.linkText("home"));
   }
 
   public void fillContactForm(ContactData contactData) {
@@ -39,5 +38,17 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     type(By.name("homepage"), contactData.getHomepage());
+  }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteSelectedGroups() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
+
+  public void assertTrueDeleteSelectedGroups() {
+        wd.switchTo().alert().accept();
   }
 }
