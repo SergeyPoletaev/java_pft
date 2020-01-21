@@ -44,15 +44,6 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public boolean isElementPresent(By by) {
-    try {
-      wd.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
   public ContactHelper getContactHelper() {
     return contactHelper;
   }
