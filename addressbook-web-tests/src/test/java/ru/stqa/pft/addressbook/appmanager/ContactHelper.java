@@ -40,8 +40,8 @@ public class ContactHelper extends HelperBase {
     type(By.name("homepage"), contactData.getHomepage());
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteSelectedGroups() {
@@ -69,5 +69,9 @@ public class ContactHelper extends HelperBase {
     fillContactForm(contact);
     submitContactCreation();
     returnToHomePage();
+  }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 }
