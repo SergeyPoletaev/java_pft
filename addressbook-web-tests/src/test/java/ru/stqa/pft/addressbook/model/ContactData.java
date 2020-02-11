@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int  id;
+  private int  id = Integer.MAX_VALUE;
   private  String firstname;
   private  String middlename;
   private  String lastname;
@@ -20,46 +20,84 @@ public class ContactData {
   private  String email3;
   private  String homepage;
 
-  public ContactData(String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String email2, String email3, String homepage) {
-    this.id = Integer.MAX_VALUE;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.home = home;
-    this.mobile = mobile;
-    this.work = work;
-    this.fax = fax;
-    this.email = email;
-    this.email2 = email2;
-    this.email3 = email3;
-    this.homepage = homepage;
+  public ContactData whisId(int id) {
+    this.id = id;
+    return this;
   }
 
-  public ContactData(int id, String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String email2, String email3, String homepage) {
-    this.id = id;
+  public ContactData whisFirstname(String firstname) {
     this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.home = home;
-    this.mobile = mobile;
-    this.work = work;
-    this.fax = fax;
-    this.email = email;
-    this.email2 = email2;
-    this.email3 = email3;
-    this.homepage = homepage;
+    return this;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public ContactData whisMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
+
+  public ContactData whisLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData whisNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public ContactData whisTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public ContactData whisCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public ContactData whisAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData whisHome(String home) {
+    this.home = home;
+    return this;
+  }
+
+  public ContactData whisMobile(String mobile) {
+    this.mobile = mobile;
+    return this;
+  }
+
+  public ContactData whisWork(String work) {
+    this.work = work;
+    return this;
+  }
+
+  public ContactData whisFax(String fax) {
+    this.fax = fax;
+    return this;
+  }
+
+  public ContactData whisEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactData whisEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContactData whisEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+  public ContactData whisHomepage(String homepage) {
+    this.homepage = homepage;
+    return this;
   }
 
   public int  getId() {

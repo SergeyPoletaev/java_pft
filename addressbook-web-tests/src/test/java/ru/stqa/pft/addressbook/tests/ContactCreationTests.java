@@ -3,23 +3,22 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() throws Exception {
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().initContactCreation();
-    ContactData contact = new ContactData("Игнат", "Вася", "Муравьев", "hobart", "1-2-3", "ООО Элекит", "Пересвет, ул.Ленина д.5", "+74994031017", "+79035540414", "+74994031057", "+74994569878", "123@test.ru", "456@test.ru", "789@test.ru", "http:/220-test.ru");
-    app.getContactHelper().fillContactForm(contact);
-    app.getContactHelper().submitContactCreation();
-    app.getContactHelper().returnToHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    List<ContactData> before = app.contact().list();
+    ContactData contact = new ContactData()
+            .whisFirstname("Игнат").whisLastname("Васин").whisMiddlename("Котёночек").whisNickname("hobart").whisTitle("1-2-3")
+            .whisCompany("ООО Элекит").whisAddress("Пересвет, ул.Ленина д.5").whisHome("+74994031017").whisMobile("+79035540414")
+            .whisWork("+74994031057").whisFax("+74994569878").whisEmail("123@test.ru").whisEmail2("456@test.ru")
+            .whisEmail3("789@test.ru").whisHomepage("http:/220-test.ru");
+    app.contact().create(contact);
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
     before.add(contact);
