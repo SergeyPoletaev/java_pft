@@ -7,32 +7,30 @@ package ru.stqa.pft.addressbook.tests;
 
         import java.util.Comparator;
         import java.util.List;
+        import java.util.Set;
 
 public class GroupModificationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePrecondition() {
     app.goTo().groupPage();
-    if(app.group().list().size() == 0) {
+    if(app.group().all().size() == 0) {
       app.group().create(new GroupData().whisName("test1"));
     }
   }
 
   @Test
   public void testGroupModification() {
-    List<GroupData> before = app.group().list();
-    int index = before.size() - 1;
+    Set<GroupData> before = app.group().all();
+    GroupData modifyGroup = before.iterator().next();
     GroupData group = new GroupData()
-            .whisId(before.get(index).getId()).whisName("test1").whisHeader("test2").whisFooter("test3");
-    app.group().modify(index, group);
-    List<GroupData> after = app.group().list();
+            .whisId(modifyGroup.getId()).whisName("test1").whisHeader("test2").whisFooter("test3");
+    app.group().modify(group);
+    Set<GroupData> after = app.group().all();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(index);
+    before.remove(modifyGroup);
     before.add(group);
-    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-    before.sort(byId);
-    after.sort(byId);
     Assert.assertEquals(before, after);
   }
 }
