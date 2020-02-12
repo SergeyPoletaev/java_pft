@@ -20,82 +20,82 @@ public class ContactData {
   private  String email3;
   private  String homepage;
 
-  public ContactData whisId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
     return this;
   }
 
-  public ContactData whisFirstname(String firstname) {
+  public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
     return this;
   }
 
-  public ContactData whisMiddlename(String middlename) {
+  public ContactData withMiddlename(String middlename) {
     this.middlename = middlename;
     return this;
   }
 
-  public ContactData whisLastname(String lastname) {
+  public ContactData withLastname(String lastname) {
     this.lastname = lastname;
     return this;
   }
 
-  public ContactData whisNickname(String nickname) {
+  public ContactData withNickname(String nickname) {
     this.nickname = nickname;
     return this;
   }
 
-  public ContactData whisTitle(String title) {
+  public ContactData withTitle(String title) {
     this.title = title;
     return this;
   }
 
-  public ContactData whisCompany(String company) {
+  public ContactData withCompany(String company) {
     this.company = company;
     return this;
   }
 
-  public ContactData whisAddress(String address) {
+  public ContactData withAddress(String address) {
     this.address = address;
     return this;
   }
 
-  public ContactData whisHome(String home) {
+  public ContactData withHome(String home) {
     this.home = home;
     return this;
   }
 
-  public ContactData whisMobile(String mobile) {
+  public ContactData withMobile(String mobile) {
     this.mobile = mobile;
     return this;
   }
 
-  public ContactData whisWork(String work) {
+  public ContactData withWork(String work) {
     this.work = work;
     return this;
   }
 
-  public ContactData whisFax(String fax) {
+  public ContactData withFax(String fax) {
     this.fax = fax;
     return this;
   }
 
-  public ContactData whisEmail(String email) {
+  public ContactData withEmail(String email) {
     this.email = email;
     return this;
   }
 
-  public ContactData whisEmail2(String email2) {
+  public ContactData withEmail2(String email2) {
     this.email2 = email2;
     return this;
   }
 
-  public ContactData whisEmail3(String email3) {
+  public ContactData withEmail3(String email3) {
     this.email3 = email3;
     return this;
   }
 
-  public ContactData whisHomepage(String homepage) {
+  public ContactData withHomepage(String homepage) {
     this.homepage = homepage;
     return this;
   }

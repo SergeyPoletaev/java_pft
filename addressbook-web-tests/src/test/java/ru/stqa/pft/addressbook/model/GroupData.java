@@ -8,22 +8,22 @@ public class GroupData {
   private String header;
   private String footer;
 
-  public GroupData whisId(int id) {
+  public GroupData withId(int id) {
     this.id = id;
     return this;
   }
 
-  public GroupData whisName(String name) {
+  public GroupData withName(String name) {
     this.name = name;
     return this;
   }
 
-  public GroupData whisHeader(String header) {
+  public GroupData withHeader(String header) {
     this.header = header;
     return this;
   }
 
-  public GroupData whisFooter(String footer) {
+  public GroupData withFooter(String footer) {
     this.footer = footer;
     return this;
   }
