@@ -10,33 +10,33 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactPhoneTests extends TestBase {
+public class ContactAddressTests extends TestBase {
 
   @BeforeMethod
   public void ensurePrecondition() {
     if(app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstname("Игнат").withLastname("Васин")
-      .withHome("+7(111)").withMobile("22-22").withWork("33 33 33"));
+      .withAddress("Сватково, ул.Королева д.19"));
     }
   }
 
   @Test
-  public void testContactPhones() {
+  public void testContactAddress() {
     app.goTo().gotoHomePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+    assertThat(contact.getAddress(), equalTo(mergeAddress(contactInfoFromEditForm)));
   }
 
 
-  private String mergePhones(ContactData contact) {
-    return Arrays.asList(contact.getHome(), contact.getMobile(), contact.getWork())
+  private String mergeAddress(ContactData contact) {
+    return Arrays.asList(contact.getAddress())
             .stream().filter((s) -> ! s.equals(""))
-            .map(ContactPhoneTests::cleaned)
+//            .map(ContactAddressTests::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
-  public static String cleaned(String phone) {
-    return phone.replaceAll("\\s","").replaceAll("[-()]", "");
+  public static String cleaned(String address) {
+    return address.replaceAll("\\s","").replaceAll("[-()]", "");
   }
 }

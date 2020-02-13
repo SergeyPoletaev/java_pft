@@ -20,9 +20,11 @@ public class ContactData {
   private  String email3;
   private  String homepage;
   private  String allPhones;
+  private  String allEmails;
 
-  public String getAllPhones() {
-    return allPhones;
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
   }
 
   public ContactData withAllPhones(String allPhones) {
@@ -172,6 +174,14 @@ public class ContactData {
 
   public String getHomepage() {
     return homepage;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   @Override
