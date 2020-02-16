@@ -16,3 +16,4 @@ sandbox/.idea/workspace.xml
 .idea/workspace.xml
 out/
 addressbook-web-tests/.idea/workspace.xml
+*.log
