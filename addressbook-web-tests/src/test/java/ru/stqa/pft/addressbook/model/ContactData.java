@@ -3,69 +3,109 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int  id = Integer.MAX_VALUE;
+
   @Expose
+  @Column(name = "firstname")
   private  String firstname;
+
   @Expose
+  @Column(name = "middlename")
   private  String middlename;
+
   @Expose
+  @Column(name = "lastname")
   private  String lastname;
+
   @Expose
+  @Column(name = "nickname")
   private  String nickname;
+
   @Expose
+  @Column(name = "title")
   private  String title;
+
   @Expose
+  @Column(name = "company")
   private  String company;
+
   @Expose
+  @Column(name = "address")
+  @Type(type = "text")
   private  String address;
+
   @Expose
+  @Column(name = "home")
+  @Type(type = "text")
   private  String home;
+
   @Expose
+  @Column(name = "mobile")
+  @Type(type = "text")
   private  String mobile;
+
   @Expose
+  @Column(name = "work")
+  @Type(type = "text")
   private  String work;
+
   @Expose
+  @Column(name = "fax")
+  @Type(type = "text")
   private  String fax;
+
   @Expose
+  @Column(name = "email")
+  @Type(type = "text")
   private  String email;
+
   @Expose
+  @Column(name = "email2")
+  @Type(type = "text")
   private  String email2;
+
   @Expose
+  @Column(name = "email3")
+  @Type(type = "text")
   private  String email3;
+
   @Expose
+  @Column(name = "homepage")
+  @Type(type = "text")
   private  String homepage;
+
   @Expose
+  @Transient
   private  String allPhones;
+
   @Expose
+  @Transient
   private  String allEmails;
+
   @Expose
-  private File photo;
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
-  public File getPhoto() {
-    return photo;
-  }
+  @Expose
+  @Transient
+  private String group;
 
-  public ContactData withPhoto(File photo) {
-    this.photo = photo;
-    return this;
-  }
 
-  public ContactData withAllEmails(String allEmails) {
-    this.allEmails = allEmails;
-    return this;
-  }
-
-  public ContactData withAllPhones(String allPhones) {
-    this.allPhones = allPhones;
-    return this;
-  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -147,6 +187,27 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo.getPath();
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+
   public int  getId() {
     return id;
   }
@@ -218,6 +279,15 @@ public class ContactData {
   public String getAllEmails() {
     return allEmails;
   }
+
+  public File getPhoto() {
+    return new File(photo);
+  }
+
+  public String getGroup() {
+    return group;
+  }
+
 
   @Override
   public String toString() {
