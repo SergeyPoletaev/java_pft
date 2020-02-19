@@ -81,7 +81,8 @@ public class ContactDataGenerator {
     for (int i = 0; i < count; i++) {
       contacts.add(new ContactData().withFirstname(String.format("Вася %s", i))
               .withMiddlename(String.format("Милый %s", i)).withLastname(String.format("Козлов %s", i))
-              .withGroup(String.format("test %s", i)).withPhoto(new File("src/test/resources/stru.png")));
+              .withGroup(String.format("test %s", i)).withPhoto(new File("src/test/resources/stru.png"))
+              .withNickname("hobart"));
     }
     return contacts;
   }

@@ -117,6 +117,10 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
   }
 
+  public int count() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
