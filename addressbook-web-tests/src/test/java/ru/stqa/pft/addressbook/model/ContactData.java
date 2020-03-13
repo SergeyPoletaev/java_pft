@@ -317,4 +317,9 @@ public class ContactData {
   public int hashCode() {
     return Objects.hash(id, firstname, middlename, lastname, nickname);
   }
+
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+  }
 }

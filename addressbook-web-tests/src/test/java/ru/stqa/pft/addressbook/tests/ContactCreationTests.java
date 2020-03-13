@@ -53,13 +53,13 @@ public class ContactCreationTests extends TestBase {
     }
   }
 
+
   @Test (dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) {
+    Groups groups = app.db().groups();
     Contacts before = app.db().contacts();
-//    File photo = new File("src/test/resources/stru.png"); // теперь это в ContactDataGenerator передаетсч в кач.параметра
-    app.contact().create(contact);
+    app.contact().create(contact.inGroup(groups.iterator().next()));
     Contacts after = app.db().contacts();
-//    assertThat(after.size(), equalTo(before.size() + 1)); // старый способ проверки
     assertThat(app.contact().count(), equalTo(before.size() + 1));
 
     assertThat(after, equalTo(

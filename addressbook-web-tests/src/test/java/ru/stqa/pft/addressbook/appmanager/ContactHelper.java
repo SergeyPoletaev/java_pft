@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,15 +48,18 @@ public class ContactHelper extends HelperBase {
     type(By.name("email3"), contactData.getEmail3());
 
     if (creation) {
-//      if (contactData.getGroup() != null) {
-//        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-//      }
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group")))
+                .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
     type(By.name("homepage"), contactData.getHomepage());
   }
+
 
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
@@ -181,5 +186,13 @@ public class ContactHelper extends HelperBase {
 //    wd.findElement(By.xpath(String.format("//input [@value= '%s']/../../td[8]/a", id))).click();
 //    wd.findElement(By.xpath(String.format("//tr[.//input[@value= '%s']]/td[8]/a", id))).click();
 //    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+  }
+
+
+  // экспирименты
+  public void addContactInGroup(Groups groups) {
+    new Select(wd.findElement(By.name("to_group")))
+            .selectByVisibleText(groups.iterator().next().getName());
+    click(By.name("add"));
   }
 }
